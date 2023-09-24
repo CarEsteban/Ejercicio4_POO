@@ -3,8 +3,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Esta clase representa un programa que gestiona un campeonato de fútbol con jugadores extremos y porteros.
+ */
 public class Campeonato {
     public static void main(String[] args) {
+        //Declaracion de variables a usar
         ArrayList<Portero> porteros = new ArrayList<>();
         ArrayList<Extremo> extremos = new ArrayList<>();
         ArrayList<Integer> efectividadExtremos = new ArrayList<>();
@@ -14,6 +18,7 @@ public class Campeonato {
         String nombre,pais;
         int menu, opcion,subMenu,faltas, goles_directos,total_lanzamientos,pases,asistencias_efectivas,goles_recibidos,paradas_efectivas,x = 0;
 
+        //inicio del menu
         while(continuar){
             System.out.println("***** Menú de Jugadores *****");
             System.out.println("1. Ingresar datos de jugador");
@@ -38,6 +43,7 @@ public class Campeonato {
                             continuarSubmenu = true;
                             x = 0;
                             while(continuarSubmenu){
+                                //captura de datos del jugador extremo
                                 System.out.println("INFORMACION DE JUGADOR EXTREMO");
 
                                 System.out.print("Ingresa el nombre del jugador: ");
@@ -62,7 +68,7 @@ public class Campeonato {
                                 asistencias_efectivas = scan.nextInt();scan.nextLine();
 
                                 extremos.add(new Extremo(nombre, pais, faltas, goles_directos, total_lanzamientos, pases, asistencias_efectivas));
-
+                                //calculo de la efectividad del jugador
                                 extremos.get(x).calcularEfectividad(pases, asistencias_efectivas, goles_directos, total_lanzamientos, faltas);
                                 efectividadExtremos.add(extremos.get(x).getEfectividad());
                                
@@ -90,6 +96,7 @@ public class Campeonato {
                             x = 0;
                             while(continuarSubmenu){
                                 
+                                //captura de datos del jugador portero
                                 System.out.println("INFORMACION DE JUGADOR PORTERO");
 
                                 
@@ -115,7 +122,7 @@ public class Campeonato {
                                 goles_recibidos = scan.nextInt();
 
                                 porteros.add(new Portero(nombre, pais, faltas, goles_directos, total_lanzamientos, paradas_efectivas, goles_recibidos));
-
+                                //calculo de la efectivdad del jugador
                                 porteros.get(x).calcularEfectividad(paradas_efectivas, goles_recibidos, goles_directos, total_lanzamientos);
                                 efectividadPorteros.add(porteros.get(x).getEfectividad());
                                
@@ -147,7 +154,7 @@ public class Campeonato {
                 case 2:
                     System.out.println("MOSTRAR TODOS LOS JUGADORES");
                     System.out.println("============================:");
-
+                    //validacion si estan vacios los campos
                     if(extremos.isEmpty() && porteros.isEmpty()){
                         System.out.println("No hay jugadores en la lista.");
                     }else{
@@ -225,3 +232,5 @@ public class Campeonato {
         scan.close();
     }
 }
+
+//mas ejercicios asi pls, este si estaba bonito :D
