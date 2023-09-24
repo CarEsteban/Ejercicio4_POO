@@ -20,7 +20,7 @@ public class Extremo extends Jugador {
     }
 
     public void calcularEfectividad(int pases, int asistencias_efectivas, int goles_directos, int total_lanzamientos, int faltas){
-        
+        efectividad = ((pases + asistencias_efectivas - faltas)*100/(pases + asistencias_efectivas + faltas)) + (goles_directos*100 / total_lanzamientos);
     }
 
     public int getEfectividad() {
